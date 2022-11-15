@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        p{color: red}
+    </style>
+</head>
+<body>
+<form method=post>
+<label for="winningplayer">Winning Player</label>
+<div class="winnerselect">
+    <select class="dropdown" name="winning_player" value= "{{ default.winningplayer }}">
+        {% for x in players %}
+            {% if x == default.winningplayer %}
+                <option value="{{x}}" selected>{{x}}</option>
+            {% else %}
+                <option value="{{x}}">{{x}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    
+</div>
+<label for="losingplayer">Losing Player</label>
+<div class="loserselect">
+    <select class="dropdown" name="losing_player" value="{{ default.losingplayer }}">
+        {% for x in players %}
+            {% if x == default.losingplayer %}
+                <option value="{{x}}" selected>{{x}}</option>
+            {% else %}
+                <option value="{{x}}">{{x}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<label for="winningMC">Winning Deck</label>
+<div class="winningDeck">
+    <select class="dropdown" name="winningMC" value="{{ default.winningMC }}">
+        {% for x in decks %}
+            {% if x == default.winningMC %}
+                <option value="{{x}}" selected>{{x}}</option>
+            {% else %}
+                <option value="{{x}}">{{x}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<label for="losingMC">Losing Deck</label>
+<div class="losingDeck">
+    <select class="dropdown" name="losingMC" value="{{ default.losingMC }}">
+        {% for x in decks %}
+            {% if x == default.losingMC %}
+                <option value="{{x}}" selected>{{x}}</option>
+            {% else %}
+                <option value="{{x}}">{{x}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<label for="Tournament">Tournament</label>
+<div class="Tournament">
+    <select class="dropdown" name="Tournament" value="{{ default.tour }}">
+        {% for key,value in tournaments.items() %}
+            {% if key == default.tour %}
+                <option value="{{key}}" selected>{{key}}</option>
+            {% else %}
+                <option value="{{key}}">{{key}}</option>
+           {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<label for="Wins">Games won by set winner(Input 1 if only inputting an individual game)<input name="Wins" value="{{ default.Wins }}"/></label>
+<label for="Losses">Games lost by set winner(Input 0 if only inputting an individual game)<input name="Losses" value="{{ default.Losses }}"/></label>
+<input type="submit" value="Submit">
+</form>
+<p>{{message}}</p>
+</body>
+</html>
